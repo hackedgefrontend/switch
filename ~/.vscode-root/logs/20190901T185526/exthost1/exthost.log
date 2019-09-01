@@ -1,0 +1,79 @@
+[2019-09-01 18:55:30.131] [exthost] [info] extension host started
+[2019-09-01 18:55:30.175] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"activationEvent":"*"}
+[2019-09-01 18:55:30.175] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/debug-auto-launch/dist/extension
+[2019-09-01 18:55:30.183] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2019-09-01 18:55:30.183] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/emmet/dist/extension
+[2019-09-01 18:55:30.213] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2019-09-01 18:55:30.213] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/git/dist/main
+[2019-09-01 18:55:30.368] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2019-09-01 18:55:30.368] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/merge-conflict/dist/extension
+[2019-09-01 18:55:30.375] [exthost] [info] eager extensions activated
+[2019-09-01 18:56:02.338] [exthost] [info] extension host started
+[2019-09-01 18:56:02.352] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"activationEvent":"*"}
+[2019-09-01 18:56:02.352] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/debug-auto-launch/dist/extension
+[2019-09-01 18:56:02.355] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2019-09-01 18:56:02.355] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/emmet/dist/extension
+[2019-09-01 18:56:02.368] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2019-09-01 18:56:02.368] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/git/dist/main
+[2019-09-01 18:56:02.452] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2019-09-01 18:56:02.452] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/merge-conflict/dist/extension
+[2019-09-01 18:56:02.457] [exthost] [info] eager extensions activated
+[2019-09-01 18:56:57.277] [exthost] [info] ExtensionService#_doActivateExtension vscode.css-language-features {"startup":false,"activationEvent":"onLanguage:css"}
+[2019-09-01 18:56:57.277] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/css-language-features/client/dist/cssMain
+[2019-09-01 18:57:04.989] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"activationEvent":"onLanguage:javascript"}
+[2019-09-01 18:57:04.989] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/typescript-language-features/dist/extension
+[2019-09-01 18:57:28.187] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2019-09-01 18:57:28.187] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/configuration-editing/dist/extension
+[2019-09-01 18:57:28.292] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features {"startup":false,"activationEvent":"onLanguage:jsonc"}
+[2019-09-01 18:57:28.293] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/json-language-features/client/dist/jsonMain
+[2019-09-01 18:59:38.582] [exthost] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2019-09-01 18:59:38.582] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/extension-editing/dist/extension
+[2019-09-01 19:47:21.494] [exthost] [error] [vscode.typescript-language-features] provider FAILED
+[2019-09-01 19:47:21.496] [exthost] [error] Error: TypeScript Server Error (3.4.3)
+Cannot read property 'kind' of undefined
+TypeError: Cannot read property 'kind' of undefined
+    at getRootDeclaration (tsserver.js:10974:21)
+    at Object.isCatchClauseVariableDeclarationOrBindingElement (tsserver.js:8894:20)
+    at getTypeOfVariableOrParameterOrPropertyWorker (tsserver.js:36105:20)
+    at getTypeOfVariableOrParameterOrProperty (tsserver.js:36078:28)
+    at getTypeOfSymbol (tsserver.js:36387:24)
+    at getTypeOfSymbolAtLocation (tsserver.js:46634:20)
+    at Object.getTypeOfSymbolAtLocation (tsserver.js:31211:35)
+    at Object.getSymbolDisplayPartsDocumentationAndSymbolKind (tsserver.js:107247:97)
+    at tsserver.js:98882:41
+    at Object.runWithCancellationToken (tsserver.js:31444:28)
+    at createCompletionDetailsForSymbol (tsserver.js:98881:30)
+    at Object.getCompletionEntryDetails (tsserver.js:98863:28)
+    at Object.getCompletionEntryDetails (tsserver.js:120938:35)
+    at tsserver.js:129986:57
+    at Object.mapDefined (tsserver.js:668:30)
+    at IOSession.Session.getCompletionEntryDetails (tsserver.js:129984:33)
+    at Session.handlers.ts.createMapFromTemplate._a.(anonymous function) (tsserver.js:128921:61)
+    at tsserver.js:130454:88
+    at IOSession.Session.executeWithRequestId (tsserver.js:130445:28)
+    at IOSession.Session.executeCommand (tsserver.js:130454:33)
+    at IOSession.Session.onMessage (tsserver.js:130476:35)
+    at Interface.<anonymous> (tsserver.js:131773:27)
+    at Interface.emit (events.js:182:13)
+    at Interface._onLine (readline.js:290:10)
+    at Interface._normalWrite (readline.js:433:12)
+    at Socket.ondata (readline.js:149:10)
+    at Socket.emit (events.js:182:13)
+    at addChunk (_stream_readable.js:279:12)
+    at readableAddChunk (_stream_readable.js:264:11)
+    at Socket.Readable.push (_stream_readable.js:219:10)
+    at Pipe.onread (net.js:636:20)
+	at Function.create (/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:1:174464)
+	at v.dispatchResponse (/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:1:179770)
+	at v.dispatchMessage (/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:1:178522)
+	at constructor._reader.onData.e (/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:1:177878)
+	at u.fire (/usr/share/code/resources/app/out/vs/workbench/services/extensions/node/extensionHostProcess.js:44:708)
+	at t.Reader.onLengthData (/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:1:183738)
+	at Socket.t.Reader.constructor.e.on.e (/usr/share/code/resources/app/extensions/typescript-language-features/dist/extension.js:1:183386)
+	at Socket.emit (events.js:182:13)
+	at addChunk (_stream_readable.js:279:12)
+	at readableAddChunk (_stream_readable.js:264:11)
+	at Socket.Readable.push (_stream_readable.js:219:10)
+	at Pipe.onread (net.js:636:20)
+[2019-09-01 21:40:51.255] [exthost] [info] ExtensionService#_doActivateExtension vscode.html-language-features {"startup":false,"activationEvent":"onLanguage:html"}
+[2019-09-01 21:40:51.255] [exthost] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/html-language-features/client/dist/htmlMain

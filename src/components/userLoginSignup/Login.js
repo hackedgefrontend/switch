@@ -1,8 +1,9 @@
 import React , { Component } from 'react'
-import { Tab , FormControl, InputLabel , Input , FormHelperText , Container , Fab} from '@material-ui/core';
+import { Tab , FormControl, InputLabel , Input , Container , Fab} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import NavigationIcon from '@material-ui/icons/Navigation';
 
+import GNB from './GNB'
 import '../../style/Login.css'
 
 class Login extends Component{
@@ -13,9 +14,10 @@ class Login extends Component{
         email: '',
         loginpassword: '',
         reenterPassword:'',
-        signUppassword:''
+        signUppassword:'',
+        success: false
     }
-
+    
     loginTabEvent = () => {
      this.setState({ loginDivDisplay: true, signUPDivDisplay: false });   
     }
@@ -36,125 +38,142 @@ class Login extends Component{
        this.setState({ [e.target.name] : e.target.value })
     }
 
-    signUpValidation = () => {
-        {this.state.email.length !== 0 && (this.state.signUppassword.length !==0 && this.state.reenterPassword.length !==0) ? 
-        (this.state.signUppassword === this.state.reenterPassword ? (alert("Right")) : (alert("Wrong"))):
-        (alert("Please input values in all the fields"))}
+    checkForSuccessVariable = () => {
+        if(this.state.success)
+            this.props.history.push("/register")
     }
 
+    signUpValidation = () => {
+        const emailRegex = /^\S+@\S+\.\S+$/
+        {this.state.email.length !== 0 && (this.state.signUppassword.length !==0 && this.state.reenterPassword.length !==0) ? 
+        (this.state.email.match(emailRegex)?
+            ((this.state.signUppassword === this.state.reenterPassword ? 
+                (this.setState({success : true})) : 
+                (alert("Passwords doesn't match")))):
+            (alert("Please enter a valid email")))
+        :(alert("Please input values in all the fields"))}
+        this.checkForSuccessVariable()
+    }
+ 
     loginValidation = () => {
-        {(this.state.email.length !==0 && this.state.loginpassword.length !==0) ? (alert("Goods")) : (alert("Input all the fields"))}
+        const emailRegex = /^\S+@\S+\.\S+$/
+        {(this.state.email.length !==0 && this.state.loginpassword.length !==0) 
+            ? (this.state.email.match(emailRegex)?(this.setState({success : true})):(alert("Enter a Valid Email"))) 
+            : (alert("Input all the fields"))}
+        this.checkForSuccessVariable()
     }
 
     render(){
         return(
-            <Container className = "test">
-            <div className = "loginDiv">
-                <div className = "tabContainer">
-                   <Tab 
-                   value  = "login"
-                   label = {<span className="loginTabSpan">Login</span>}
-                   className = "loginTab"
-                   onClick = {this.loginTabEvent}
-                   wrapped
-                   /> |
+            <React.Fragment>
+                <GNB/>
+                <Container className = "test">
+                <div className = "loginDiv">
+                    <div className = "tabContainer">
                     <Tab 
-                   value  = "signup"
-                   label = {<span className="signUpTab">Sign Up</span>}
-                   className = "signupTab"
-                   onClick = {this.signupTabEvent}
-                   wrapped
-                   />
-                </div>
-
-                <div className = "tabContent">
-                { this.state.loginDivDisplay ? (<div className = "loginTabContent">
-                        <div className = "loginTabContentEmail">
-                            <FormControl required>
-                                    <InputLabel htmlFor="emailInput">Email address</InputLabel>
-                                    <Input id="emailInput" name="email" value={this.state.email} onChange={this.handleChange}/>
-                            </FormControl>
-                        </div>
-                        <br/>
-                        <div className  = "loginTabContentPassword">
-                            <FormControl required>
-                                    <InputLabel htmlFor="passwordInput">Password</InputLabel>
-                                    <Input id="standard-password-input" name="loginpassword"  type="password" value={this.state.loginpassword} onChange={this.handleChange}/>
-                            </FormControl>
-                        </div>
-                        <div className = "buttonGroups">
-                            <div className = "contentLoginButton">
-                                <Fab
-                                    variant="extended"
-                                    size="medium"
-                                    color="primary"
-                                    aria-label="add"
-                                    onClick = {this.loginValidation}
-                                    >Login
-                                <NavigationIcon/>
-                                </Fab>
-                            </div>
-                            <div className = "contentClearButton">
-                                <Fab
-                                    variant="extended"
-                                    size="medium"
-                                    color="secondary"
-                                    aria-label="add"
-                                    onClick = {this.clearText}
-                                    >Clear
-                                    <DeleteIcon />
-                                </Fab>
-                            </div>
-                        </div>
-                </div>): 
-                (<div className = "signupTabContent">
-                <div className = "signupTabContentEmail">
-                    <FormControl required>
-                            <InputLabel htmlFor="signupEmail">Email address</InputLabel>
-                            <Input id="signupEmail" name = "email" value={this.state.email} onChange={this.handleChange}/>
-                    </FormControl>
-                </div>
-                <br/>
-                <div className  = "signupTabContentPassword">
-                    <FormControl required>
-                            <InputLabel htmlFor="passwordInput">Password</InputLabel>
-                            <Input id="standard-password-input" name="signUppassword" type="password" value={this.state.signUppassword} onChange={this.handleChange}/>
-                    </FormControl>
-                </div>
-                <div className  = "signupTabContentPasswordReenter">
-                    <FormControl required>
-                            <InputLabel htmlFor="signupRePassword">Re-enter Password</InputLabel>
-                            <Input id="standard-password-input" type = "password" name = "reenterPassword" value={this.state.reenterPassword} onChange={this.handleChange}/>
-                    </FormControl>
-                </div>
-                <div className = "buttonGroups">
-                    <div className = "contentLoginButton">
-                        <Fab
-                            variant="extended"
-                            size="medium"
-                            color="primary"
-                            aria-label="add"
-                            onClick={this.signUpValidation}
-                            >Sign Up
-                        <NavigationIcon/>
-                        </Fab>
+                    value  = "login"
+                    label = {<span className="loginTabSpan">Login</span>}
+                    className = "loginTab"
+                    onClick = {this.loginTabEvent}
+                    wrapped
+                    /> |
+                    <Tab 
+                    value  = "signup"
+                    label = {<span className="signUpTab">Sign Up</span>}
+                    className = "signupTab"
+                    onClick = {this.signupTabEvent}
+                    wrapped
+                    />
                     </div>
-                    <div className = "contentClearButton">
-                        <Fab
-                            variant="extended"
-                            size="medium"
-                            color="secondary"
-                            aria-label="add"
-                            onClick = {this.clearText}
-                            >Clear
-                            <DeleteIcon />
-                        </Fab>
+                    <div className = "tabContent">
+                    { this.state.loginDivDisplay ? (<div className = "loginTabContent">
+                            <div className = "loginTabContentEmail">
+                                <FormControl required>
+                                        <InputLabel htmlFor="emailInput">Email address</InputLabel>
+                                        <Input id="emailInput" name="email" value={this.state.email} onChange={this.handleChange}/>
+                                </FormControl>
+                            </div>
+                            <br/>
+                            <div className  = "loginTabContentPassword">
+                                <FormControl required>
+                                        <InputLabel htmlFor="passwordInput">Password</InputLabel>
+                                        <Input id="standard-password-input" name="loginpassword"  type="password" value={this.state.loginpassword} onChange={this.handleChange}/>
+                                </FormControl>
+                            </div>
+                            <div className = "buttonGroups">
+                                <div className = "contentLoginButton">
+                                    <Fab
+                                        variant="extended"
+                                        size="medium"
+                                        color="primary"
+                                        aria-label="add"
+                                        onClick = {this.loginValidation}
+                                        >Login
+                                    <NavigationIcon/>
+                                    </Fab>
+                                </div>
+                                <div className = "contentClearButton">
+                                    <Fab
+                                        variant="extended"
+                                        size="medium"
+                                        color="secondary"
+                                        aria-label="add"
+                                        onClick = {this.clearText}
+                                        >Clear
+                                        <DeleteIcon />
+                                    </Fab>
+                                </div>
+                            </div>
+                    </div>): 
+                    (<div className = "signupTabContent">
+                    <div className = "signupTabContentEmail">
+                        <FormControl required>
+                                <InputLabel htmlFor="signupEmail">Email address</InputLabel>
+                                <Input id="signupEmail" name = "email" value={this.state.email} onChange={this.handleChange}/>
+                        </FormControl>
                     </div>
+                    <br/>
+                    <div className  = "signupTabContentPassword">
+                        <FormControl required>
+                                <InputLabel htmlFor="passwordInput">Password</InputLabel>
+                                <Input id="standard-password-input" name="signUppassword" type="password" value={this.state.signUppassword} onChange={this.handleChange}/>
+                        </FormControl>
+                    </div>
+                    <div className  = "signupTabContentPasswordReenter">
+                        <FormControl required>
+                                <InputLabel htmlFor="signupRePassword">Re-enter Password</InputLabel>
+                                <Input id="standard-password-input" type = "password" name = "reenterPassword" value={this.state.reenterPassword} onChange={this.handleChange}/>
+                        </FormControl>
+                    </div>
+                    <div className = "buttonGroups">
+                        <div className = "contentLoginButton">
+                            <Fab
+                                variant="extended"
+                                size="medium"
+                                color="primary"
+                                aria-label="add"
+                                onClick={this.signUpValidation}
+                                >Sign Up
+                            <NavigationIcon/>
+                            </Fab>
+                        </div>
+                        <div className = "contentClearButton">
+                            <Fab
+                                variant="extended"
+                                size="medium"
+                                color="secondary"
+                                aria-label="add"
+                                onClick = {this.clearText}
+                                >Clear
+                                <DeleteIcon />
+                            </Fab>
+                        </div>
+                    </div>
+            </div>)}
                 </div>
-        </div>)}
-            </div>
-            </div>
+                </div>
             </Container>
+        </React.Fragment>
         )
     }
 }

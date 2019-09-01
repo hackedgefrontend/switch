@@ -1,0 +1,18 @@
+.textfield{
+     width:40%;
+}
+
+.buttonGroup{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%
+}
+
+.cancelBtn{
+    margin-left: 2%
+}
+
+.textfieldSpecial{
+    width:85%;
+}
