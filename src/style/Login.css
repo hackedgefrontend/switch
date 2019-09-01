@@ -1,0 +1,40 @@
+.test{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.loginDiv{
+    margin-top: 10%;
+    border: 1px solid blue;
+    padding-top: 5%;
+    padding-bottom: 5%; 
+    padding-left: 10%;
+    padding-right: 10% 
+}
+
+.loginTabSpan{
+    font-size: 160%
+}
+
+.signUpTab{
+    font-size: 160%
+}
+
+.loginTabContent{
+    margin-left: 0%;
+    margin-top: 5%;
+    padding-left: 0%
+}
+
+.buttonGroups{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15%;
+}
+
+.contentClearButton{
+    margin-left: 5%
+}
