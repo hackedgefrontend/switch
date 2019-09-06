@@ -5,6 +5,7 @@ import GNB from './components/userLoginSignup/GNB'
 import Login from './components/userLoginSignup/Login'
 import Register from './components/userLoginSignup/Register'
 import JobsNearHome from './components/listing/jobNearHome'
+import HomeNearJob from './components/listing/homeNearJob'
 
 
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/nearByJobs" component={JobsNearHome} />
+        <Route exact path="/nearByHomes" component={HomeNearJob} />
       </Switch>
     </BrowserRouter>
   );

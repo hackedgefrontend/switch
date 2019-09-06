@@ -198,10 +198,16 @@ export default function CustomizedSlider() {
     const classes = useStyles();
 
     return (
-        <Paper className={classes.root}>
-            <Typography gutterBottom>Range</Typography>
-            <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
-            {/* <div className={classes.margin} /> */}
-        </Paper>
+        // <Paper className={classes.root}>
+        <div className="ml145 mt20 wid25per">
+            <Typography gutterBottom>Tooltip value label</Typography>
+            <Slider
+                ValueLabelComponent={ValueLabelComponent}
+                aria-label="custom thumb label"
+                defaultValue={20}
+            />
+            <div className={classes.margin} />
+        </div>
+        // </Paper>
     );
 }

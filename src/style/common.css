@@ -1,13 +1,44 @@
+#root {
+    background: #f4f4f4
+}
+
+.mainContainer .heading {
+    color: #797575;
+}
+
+.wid25per {
+    width: 25%
+}
+
+.mainContainer .fs13 {
+    font-size: 13px
+}
+.mainContainer .fw600 {
+    font-weight: 600
+}
+
 .mt5 {
     margin-top: 5px
+}
+
+.mt20 {
+    margin-top: 20px
 }
 
 .mainContainer .br25 {
     border-radius: 25px;
 }
 
+.fr {
+    float: right;
+}
+
 .mr20 {
     margin-right: 20px
+}
+
+.ml145 {
+    margin-left: 145px
 }
 
 .mainContainer .locIcon {

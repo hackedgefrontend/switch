@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import LocationInput from './locationInput';
 import { makeStyles } from '@material-ui/core/styles';
-import CardList from './jobCards'
+import CardList from './homeCards'
 import CustomizedSlider from './slider'
 const axios = require('axios');
 
@@ -19,7 +19,7 @@ export default class Login extends Component {
         data: null
     }
     componentDidMount() {
-        axios.get("https://infoedge-switch-staging.herokuapp.com/switchJobs/5d7021cf5efa0f00048d36ed",
+        axios.get("https://infoedge-switch.herokuapp.com/switchHomes/5d7021cf5efa0f00048d36ed",
             {
                 headers: {
                     'X-Requested-With': 'XMLHttpRequest',

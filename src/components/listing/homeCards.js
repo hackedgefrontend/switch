@@ -13,7 +13,7 @@ import BusinessCenterOutlinedIcon from '@material-ui/icons/BusinessCenterOutline
 import BusinessOutlinedIcon from '@material-ui/icons/BusinessOutlined';
 import * as sprite from '../../style/srpSprites.png'
 
-const appartmentIcon = 'https://images.unsplash.com/photo-1525953776754-6c4b7ee655ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1522&q=80';
+const appartmentIcon = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKhTwI9ps1eyO5FmVYWmFVBbo-Et6n5UoY9S-el8iNVeYmd7xOSw';
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,13 +27,14 @@ const useStyles = makeStyles(theme => ({
     },
     image: {
         width: 128,
-        height: 128,
+        height: 125,
     },
     img: {
         margin: 'auto',
         display: 'block',
         maxWidth: '100%',
-        maxHeight: '100%',
+        height: '100%',
+        borderRadius: '4px'
     },
     hotIcon: {
         background: `url(${sprite}) no-repeat`,
@@ -57,8 +58,17 @@ export default function ComplexGrid(props) {
 
     return (
         data.map(ind => {
-            let { naukriJob, distance } = ind;
-            let { jobId, title, expLow, expHigh, city, skills, officeAddress, industry, ctcLow, ctcHigh } = naukriJob;
+            let { property, distance } = ind;
+            let { address,
+                bedrooms,
+                furnishing,
+                id,
+                price,
+                propertyMode,
+                propertyType,
+                publisherName,
+                publisherType,
+                society } = property;
 
             return (
                 <div className={classes.root}>
@@ -66,53 +76,68 @@ export default function ComplexGrid(props) {
                         <Grid container spacing={2}>
                             <Grid item>
                                 <ButtonBase className={classes.image}>
-                                    <img className={classes.img + " br25"} alt="complex" src={appartmentIcon} />
+                                    <img className={classes.img + " br4 "} alt="complex" src={appartmentIcon} />
                                 </ButtonBase>
                             </Grid>
                             <Grid item xs={12} sm container>
                                 <Grid item xs container direction="column" spacing={2}>
                                     <Grid item xs>
-                                        <Typography gutterBottom variant="subtitle1">
-                                            {title}
+                                        <Typography gutterBottom variant="subtitle1" className="heading fw600">
+                                            {society}
                                         </Typography>
-                                        <Typography variant="body2" gutterBottom>
+                                        <Typography variant="body2" gutterBottom className="heading">
                                             <LocationOnOutlinedIcon className="locIcon" />
-                                            {officeAddress}
+                                            {address}
                                         </Typography>
 
                                         <Typography variant="body2" color="textSecondary">
                                             <span className="mr20">
                                                 <BusinessCenterOutlinedIcon className="icons" />
-                                                {`${expLow}-${expHigh} yrs`}
+                                                {bedrooms}
                                             </span>
                                             <span>
                                                 <AccountBalanceWalletOutlinedIcon className="icons" />
-                                                {`Rs ${ctcLow}-${ctcHigh} lakhs`}
+                                                {`Rs ${price}`}
                                             </span>
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
-                                            <DescriptionOutlinedIcon className="icons" />
-                                            {skills}
+                                            <span className="mr20">
+                                                <BusinessCenterOutlinedIcon className="icons" />
+                                                {propertyType}
+                                            </span>
+                                            <span>
+                                                <AccountBalanceWalletOutlinedIcon className="icons" />
+                                                {propertyMode}
+                                            </span>
+                                            <span className="mr20">
+                                                <BusinessCenterOutlinedIcon className="icons" />
+                                                {furnishing}
+                                            </span>
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
-                                            <BusinessOutlinedIcon className="icons" />
-                                            {industry}
+                                            <span>
+                                                Publisher-Type : <b>{publisherType}</b>
+                                            </span>
+
                                         </Typography>
+
+                                        <Typography variant="body2" color="textSecondary">
+                                            <span className="mr20">
+                                                Publisher-Name : <b>{publisherName} </b>
+                                            </span>
+                                        </Typography>
+
                                     </Grid>
                                 </Grid>
                                 <Grid item>
-                                    <Typography variant="subtitle1"> {`${distance} kms`}</Typography>
+                                    <Typography className="heading fs13" variant="subtitle1"> {`${distance} kms`}</Typography>
                                 </Grid>
+
                             </Grid>
                         </Grid>
                     </Paper>
                 </div>
             );
-
-
-
-
-
         })
     );
 }
