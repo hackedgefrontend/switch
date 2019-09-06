@@ -12,7 +12,7 @@ import JobsNearHome from './components/listing/jobNearHome'
 import HomeNearJob from './components/listing/homeNearJob'
 
 
-import { Switch, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
