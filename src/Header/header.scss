@@ -1,0 +1,25 @@
+.headerWrapper{
+    background-color: #282c34;
+    color: white;
+    height: 30px;
+    padding: 20px 50px;
+    display: flex;
+    .appLg{
+        font-size: 22px;
+    }
+    .navBar{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        .activeTab{
+            border-bottom: 1px solid rgb(12, 105, 167);
+        }
+        span{
+            padding: 0px 20px;
+            display: flex;
+            height: 34px;
+            align-items: center;
+            cursor: pointer;
+        }
+    }
+}

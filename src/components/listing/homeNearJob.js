@@ -40,14 +40,16 @@ export default class Login extends Component {
                 })
             })
     }
+    fetchNewListWithDistance = val => {
+
+    }
 
     render() {
         let { data } = this.state;
         return (
             <React.Fragment>
-                <Gnb />
                 <Container className="mainContainer">
-                    <CustomizedSlider />
+                    <CustomizedSlider getSliderVal={this.fetchNewListWithDistance} />
                     {/* <LocationInput /> */}
                     <CardList data={data} />
                 </Container>

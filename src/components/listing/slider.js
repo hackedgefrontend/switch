@@ -18,8 +18,8 @@ const useStyles = makeStyles(theme => ({
 
 function ValueLabelComponent(props) {
     const { children, open, value } = props;
-
     const popperRef = React.useRef(null);
+    console.log('valll', value);
     React.useEffect(() => {
         if (popperRef.current) {
             popperRef.current.update();

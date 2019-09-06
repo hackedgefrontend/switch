@@ -45,7 +45,6 @@ export default class Login extends Component {
         let { data } = this.state;
         return (
             <React.Fragment>
-                <Gnb />
                 <Container className="mainContainer">
                     <CustomizedSlider />
                     {/* <LocationInput /> */}
