@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import Shimmer from './shimmer';
+import Shimmer from '../shimmer';
 import './../../style/common.css';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';

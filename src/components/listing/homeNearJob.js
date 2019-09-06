@@ -9,8 +9,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import LocationInput from './locationInput';
 import { makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
+import CustomSlider from '../slider'
 import CardList from './homeCards'
-import CustomizedSlider from './slider'
 const axios = require('axios');
 
 
@@ -42,27 +42,29 @@ export default class Login extends Component {
                 })
             })
     }
-    fetchNewListWithDistance = val => {
-        console.log(val);
-        // axios.get(`https://infoedge-switch.herokuapp.com/switchHomes/5d7021cf5efa0f00048d36ed?sliderDistance=${val}`,
-        //     {
-        //         headers: {
-        //             'X-Requested-With': 'XMLHttpRequest',
-        //             "Access-Control-Allow-Origin": '*',
-        //             'Accept': 'application/json',
-        //             "Authorization": "Basic c3dpdGNoOnN3aXRjaGluZ2lzZnVu"
-        //         }
-        //     }
-        // ).then(res => {
-        //     this.setState({
-        //         data: res.data
-        //     })
-        // })
-        //     .catch(err => {
-        //         this.setState({
-        //             data: null
-        //         })
-        //     })
+    fetchNewListWithDistance = (evt, val) => {
+        this.setState({
+            data: null
+        })
+        axios.get(`https://infoedge-switch.herokuapp.com/switchHomes/5d7021cf5efa0f00048d36ed?sliderDistance=${val}`,
+            {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    "Access-Control-Allow-Origin": '*',
+                    'Accept': 'application/json',
+                    "Authorization": "Basic c3dpdGNoOnN3aXRjaGluZ2lzZnVu"
+                }
+            }
+        ).then(res => {
+            this.setState({
+                data: res.data
+            })
+        })
+            .catch(err => {
+                this.setState({
+                    data: null
+                })
+            })
     }
 
     render() {
@@ -70,7 +72,7 @@ export default class Login extends Component {
         return (
             <React.Fragment>
                 <Container className="mainContainer">
-                <Slider onChange={this.fetchNewListWithDistance} min={5} max={100} step={1} valueLabelDisplay={true}/>
+                    <CustomSlider onChange={this.fetchNewListWithDistance} />
                     {/* <LocationInput /> */}
                     <CardList data={data} />
                 </Container>

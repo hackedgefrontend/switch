@@ -9,9 +9,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import LocationInput from './locationInput';
 import { makeStyles } from '@material-ui/core/styles';
 import CardList from './jobCards'
-import CustomizedSlider from './slider'
+import CustomSlider from '../slider'
 const axios = require('axios');
-
+const url = "https://infoedge-switch-staging.herokuapp.com/switchJobs/5d7021cf5efa0f00048d36ed";
 
 
 export default class Login extends Component {
@@ -19,7 +19,7 @@ export default class Login extends Component {
         data: null
     }
     componentDidMount() {
-        axios.get("https://infoedge-switch-staging.herokuapp.com/switchJobs/5d7021cf5efa0f00048d36ed",
+        axios.get(url,
             {
                 headers: {
                     'X-Requested-With': 'XMLHttpRequest',
@@ -40,13 +40,37 @@ export default class Login extends Component {
                 })
             })
     }
+    handleSliderChange = (evt, val) => {
+        this.setState({
+            data: null
+        })
+        axios.get(`${url}?sliderDistance=${val}`,
+            {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    "Access-Control-Allow-Origin": '*',
+                    'Accept': 'application/json',
+                    "Authorization": "Basic c3dpdGNoOnN3aXRjaGluZ2lzZnVu"
+                }
+            }
+        ).then(res => {
+            this.setState({
+                data: res.data
+            })
+        })
+            .catch(err => {
+                this.setState({
+                    data: null
+                })
+            })
+    }
 
     render() {
         let { data } = this.state;
         return (
             <React.Fragment>
                 <Container className="mainContainer">
-                    <CustomizedSlider />
+                    <CustomSlider onChange={this.handleSliderChange} />
                     {/* <LocationInput /> */}
                     <CardList data={data} />
                 </Container>
