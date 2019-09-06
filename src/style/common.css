@@ -13,6 +13,7 @@
 .mainContainer .fs13 {
     font-size: 13px
 }
+
 .mainContainer .fw600 {
     font-weight: 600
 }
@@ -39,6 +40,10 @@
 
 .ml145 {
     margin-left: 145px
+}
+
+.mainContainer .locInp {
+    margin: 12px 0 15px 146px
 }
 
 .mainContainer .locIcon {

@@ -4,31 +4,31 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 import './searchLocationInput.scss';
- 
+
 export default class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = { address: props.value || '' };
   }
- 
+
   handleChange = address => {
     this.setState({ address });
-    if(this.props.onSearchAddress){
-        this.props.onSearchAddress(address)
+    if (this.props.onSearchAddress) {
+      this.props.onSearchAddress(address)
     }
   };
- 
+
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log('Success', latLng))
       .catch(error => console.error('Error', error));
-      this.setState({ address });
-      if(this.props.onSearchAddress){
-        this.props.onSearchAddress(address)
-      }
+    this.setState({ address });
+    if (this.props.onSearchAddress) {
+      this.props.onSearchAddress(address)
+    }
   };
- 
+
   render() {
     return (
       <PlacesAutocomplete
@@ -41,11 +41,11 @@ export default class LocationSearchInput extends React.Component {
             <input
               {...getInputProps({
                 placeholder: this.props.placeholder || 'Search Places ...',
-                className: 'location-search-input',
+                className: 'location-search-input ' + this.props.className,
               })}
-              style={{width: this.props.width || "400px"}}
+              style={{ width: this.props.width || "400px" }}
             />
-            <div  style={{width: this.props.width || "420px"}} className="autocomplete-dropdown-container">
+            <div style={{ width: this.props.width || "420px" }} className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const className = suggestion.active
@@ -58,7 +58,7 @@ export default class LocationSearchInput extends React.Component {
                 return (
                   <div
                     {...getSuggestionItemProps(suggestion, {
-                      className:className+" addressSuggst",
+                      className: className + " addressSuggst",
                       style,
                     })}
                   >

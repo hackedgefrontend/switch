@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/commonHomes" component={CommonHomeFinder} />
-        <Route exact path="/jobsNearHome" component={JobsNearHome} />
+        <Route exact path="/jobsNearHome" component={HomeNearJob} />
         <Route exact path="/homeNearJob" component={HomeNearJob} />
       </Router>
     </BrowserRouter>
