@@ -1,5 +1,5 @@
 .location-search-input {
-    padding: 10px 0px 10px 10px;
+    padding: 10px;
     border: 1px solid #d4c8c8;
     border-radius: 6px;
     outline: none;
@@ -9,8 +9,8 @@
     color: grey;
     text-align: start;
     position: absolute;
-
-    .addressSuggst {
+    .addressSuggst{
         padding: 10px;
+        width: 100%;
     }
 }
