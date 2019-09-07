@@ -32,7 +32,7 @@ export default class Login extends Component {
         distance: defaultDist
     }
     componentDidMount() {
-        localStorage.setKey("switchUserId" , "1");
+        localStorage.setItem("switchUserId" , "1");
         var parsed = queryString.parse(this.props.location.search);
         let { stage, officeCity, officeAddress } = parsed;
         url = url + `?stage=${stage}&officeCity=${officeCity}&officeAddress=${officeAddress}`
@@ -52,13 +52,9 @@ export default class Login extends Component {
             })
         })
     }
-    getUrl = (path) => {
-        let url;
-        url = path.includes('homeNearJob') ? switchHomesUrl : (path.includes('jobsNearHome') ? switchJobsUrl : null);
-        return url;
-    }
+  
     updateData = () => {
-        let { loc, distance } = this.state, url;
+        let { loc, distance } = this.state;
         axios.get(`${url}?sliderDistance=${distance}&selectedLocation=${loc}`,
             { headers }
         ).then(res => {
