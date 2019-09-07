@@ -1,7 +1,11 @@
+@keyframes  sliderMove {
+    0% {width: 0%;}
+    100% {width: 100%;}
+}
 .commonHomeWrapper{
-    background-image: url("../topView.jpg");
-    background-position: center;
-    background-size: cover;
+      background-image: url("../house.jpg");
+      background-position: center;
+      background-size: cover;
 
  //   background-repeat: no-repeat;
     height: 300px;
@@ -10,4 +14,9 @@
         padding: 50px;
         justify-content: space-around;
    }
+   .commonSlider{
+     margin-top: 7px;
+     animation: sliderMove 4s;
+  }
+  
 }
