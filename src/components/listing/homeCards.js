@@ -81,11 +81,12 @@ export default function ComplexGrid(props) {
                 <div className={classes.root}>
                     <Paper className={classes.paper}>
                         <Grid container spacing={2}>
-                            <Grid item>
+                        <img width={180} className={classes.img + " br4 "} alt="complex" src={appartmentIcon} />
+                            {/* <Grid item>
                                 <ButtonBase className={classes.image}>
-                                    <img className={classes.img + " br4 "} alt="complex" src={appartmentIcon} />
+                                    
                                 </ButtonBase>
-                            </Grid>
+                            </Grid> */}
                             <Grid item xs={12} sm container>
                                 <Grid item xs container direction="column" spacing={2}>
                                     <Grid item xs>
