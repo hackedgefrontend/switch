@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import location from '../location.png';
+import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import './header.scss';
 let headerNav = [
@@ -49,22 +50,23 @@ export default class Dashboard extends React.PureComponent {
                 }
             case "/homeNearJob":
                 return {
-                    activeTab:"Find Home"
+                    activeTab: "Find Home"
                 }
             case "/commonHomes":
                 return {
-                    activeTab:"Find Common Home"
+                    activeTab: "Find Common Home"
                 }
-            dafault: return prevState;
+                dafault: return prevState;
         }
     }
     render() {
         let {
-        activeTab
+            activeTab
         } = this.state;
         return (
             <div className="headerWrapper">
                 <div className="appLg">
+                    <img alt="" src={location} className="switchIcon"></img>
                     <span>Switch</span>
                 </div>
                 <div className="navBar">
@@ -72,7 +74,6 @@ export default class Dashboard extends React.PureComponent {
                         headerNav.map((obj, key) => {
                             return (
                                 <Link style={{ color: "white", textDecoration: "none" }} to={obj.path}>
-                                   
                                     <span className={activeTab == obj.label ? "activeTab" : ""} onClick={this.changeTab.bind(this, obj.label)} key={key}>{obj.label}</span>
                                 </Link>
                             )

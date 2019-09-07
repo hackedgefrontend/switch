@@ -1,20 +1,28 @@
-.headerWrapper{
+.headerWrapper {
     background-color: #282c34;
     color: white;
     height: 30px;
     padding: 20px 50px;
     display: flex;
-    .appLg{
+    .appLg {
         font-size: 22px;
+        .switchIcon {
+            width: 22px;
+            margin-top: 5px;
+            margin-right: 8px;
+        }
     }
-    .navBar{
+
+    .navBar {
         display: flex;
         justify-content: center;
         margin: auto;
-        .activeTab{
+
+        .activeTab {
             border-bottom: 1px solid rgb(12, 105, 167);
         }
-        span{
+
+        span {
             padding: 0px 20px;
             display: flex;
             height: 34px;
