@@ -82,7 +82,7 @@ export default function ComplexGrid(props) {
                                 <img width={180} className={classes.img + " br4 "} alt="complex" src={appartmentIcon} />
                                 {/* <Grid item>
                                 <ButtonBase className={classes.image}>
-                                    <img className={classes.img + " br4 "} alt="complex" src={appartmentIcon} />
+                                    
                                 </ButtonBase>
                             </Grid> */}
                                 <Grid item xs={12} sm container>
