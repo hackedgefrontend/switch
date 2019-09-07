@@ -2,6 +2,30 @@
     background: #f4f4f4
 }
 
+.posR {
+    position: relative
+}
+
+.ml20 {
+    margin-left: 20px
+}
+
+.bgGray {
+    background-color: #f4f4f4
+}
+
+.jobBgImage {
+    background-image: url('./appartment.jpg');
+    background-size: cover;
+    height: 326px;
+}
+
+.homeBgImage {
+    background-image: url('./homes.jpg');
+    background-size: cover;
+    height: 326px;
+}
+
 .mainContainer .heading {
     color: #797575;
 }
@@ -42,9 +66,6 @@
     margin-left: 145px
 }
 
-.mainContainer .locInp {
-    margin: 12px 0 15px 146px
-}
 
 .mainContainer .locIcon {
     color: #1acce0;

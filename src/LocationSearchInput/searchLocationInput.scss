@@ -1,19 +1,16 @@
-.location-search-input{
-    padding: 10px;
+.location-search-input {
+    padding: 10px 0px 10px 10px;
     border: 1px solid #d4c8c8;
     border-radius: 6px;
     outline: none;
 }
-.autocomplete-dropdown-container{
+
+.autocomplete-dropdown-container {
     color: grey;
     text-align: start;
-    .addressSuggst{
+    position: absolute;
+
+    .addressSuggst {
         padding: 10px;
     }
 }
-
-
-
-
-
-

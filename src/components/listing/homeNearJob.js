@@ -4,6 +4,10 @@ import CustomSlider from '../slider'
 import HomeList from './homeCards'
 import JobList from './jobCards'
 import LocationInput from '../../LocationSearchInput';
+import Shimmer from '../shimmer';
+import '../../style/common.css';
+import { relative } from 'path';
+
 const axios = require('axios');
 const defaultDist = 5;
 const defaultLoc = "";
@@ -20,7 +24,8 @@ export default class Login extends Component {
     state = {
         data: null,
         loc: defaultLoc,
-        dist: defaultDist
+        searchLoc: defaultLoc,
+        distance: defaultDist
     }
     componentDidMount() {
         const { match: { path } } = this.props;
@@ -32,8 +37,11 @@ export default class Login extends Component {
         axios.get(url,
             { headers }
         ).then(res => {
+            let { address, distance } = res.data;
             this.setState({
-                data: res.data
+                data: res.data,
+                loc: address,
+                distance
             })
         }).catch(err => {
             this.setState({
@@ -46,14 +54,10 @@ export default class Login extends Component {
         url = path.includes('homeNearJob') ? switchHomesUrl : (path.includes('jobsNearHome') ? switchJobsUrl : null);
         return url;
     }
-    handleSliderChange = (evt, val) => {
-        this.setState({
-            data: null,
-            distance: val
-        })
-        let { loc, routeName } = this.state, url;
+    updateData = () => {
+        let { loc, distance, routeName } = this.state, url;
         url = this.getUrl(routeName);
-        axios.get(`${url}?sliderDistance=${val}&selectedLocation=${loc}`,
+        axios.get(`${url}?sliderDistance=${distance}&selectedLocation=${loc}`,
             { headers }
         ).then(res => {
             this.setState({
@@ -64,18 +68,56 @@ export default class Login extends Component {
                 data: null
             })
         })
+
+    }
+    handleSliderChange = (evt, val) => {
+        this.setState({
+            data: null,
+            distance: val
+        }, () => {
+            this.updateData();
+        })
+    }
+    handleChangeLocation = (val) => {
+        this.setState({
+            data: null,
+            loc: val.toString(),
+            searchLoc: val.toString()
+        }, () => {
+            this.updateData();
+        })
+    }
+    onChangeLoc = (val) => {
+        let value = val.trim();
+        this.setState({
+            searchLoc: val
+        })
+        if (!value.length) {
+            this.setState({
+                loc: ''
+            }, () => {
+                this.updateData()
+            })
+        }
     }
 
     render() {
-        let { data, routeName } = this.state;
+        let { data, routeName, searchLoc, distance } = this.state;
+        let backgrountClass = routeName && routeName.includes('homeNearJob') ? 'homeBgImage' : routeName && routeName.includes('jobsNearHome') ? 'jobBgImage' : ''
         return (
             <React.Fragment>
-                <Container className="mainContainer">
-                    <LocationInput placeholder={"Enter the Location"} className="locInp" width={"500px"} />
-                    <CustomSlider onChange={this.handleSliderChange} />
-                    {routeName && routeName.includes('homeNearJob') && <HomeList data={data} />}
-                    {routeName && routeName.includes('jobsNearHome') && <JobList data={data} />}
-                </Container>
+                <div className={backgrountClass + " bgGray"}>
+                    <Container className="mainContainer">
+                        <div style={{ display: "flex", position: relative }}>
+                            <div style={{ margin: "12px 0 15px 146px" }}>
+                                <LocationInput value={searchLoc} onChange={this.onChangeLoc} onSelectAddress={this.handleChangeLocation} placeholder={"Enter the Location"} className="locInp" width={"460px"} />
+                            </div>
+                            <CustomSlider onChange={this.handleSliderChange} value={distance} />
+                        </div>
+                        {routeName && routeName.includes('homeNearJob') && <HomeList data={data} />}
+                        {routeName && routeName.includes('jobsNearHome') && <JobList data={data} />}
+                    </Container>
+                </div>
             </React.Fragment>
         )
     }

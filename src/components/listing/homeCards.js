@@ -9,9 +9,10 @@ import './../../style/common.css';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import LocalHotelOutlinedIcon from '@material-ui/icons/LocalHotelOutlined';
 import BusinessCenterOutlinedIcon from '@material-ui/icons/BusinessCenterOutlined';
 import BusinessOutlinedIcon from '@material-ui/icons/BusinessOutlined';
-import * as sprite from '../../style/srpSprites.png'
 
 const appartmentIcon = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKhTwI9ps1eyO5FmVYWmFVBbo-Et6n5UoY9S-el8iNVeYmd7xOSw';
 
@@ -37,7 +38,6 @@ const useStyles = makeStyles(theme => ({
         borderRadius: '4px'
     },
     hotIcon: {
-        background: `url(${sprite}) no-repeat`,
         width: '17px',
         height: '16px',
         verticalAlign: 'bottom',
@@ -75,12 +75,13 @@ export default function ComplexGrid(props) {
             return (
                 <div className={classes.root}>
                     <Paper className={classes.paper}>
-                        <Grid container spacing={2}>
-                            <Grid item>
+                        <Grid container spacing={2} className="bgGray">
+                            <img width={180} className={classes.img + " br4 "} alt="complex" src={appartmentIcon} />
+                            {/* <Grid item>
                                 <ButtonBase className={classes.image}>
                                     <img className={classes.img + " br4 "} alt="complex" src={appartmentIcon} />
                                 </ButtonBase>
-                            </Grid>
+                            </Grid> */}
                             <Grid item xs={12} sm container>
                                 <Grid item xs container direction="column" spacing={2}>
                                     <Grid item xs>
@@ -94,8 +95,8 @@ export default function ComplexGrid(props) {
 
                                         <Typography variant="body2" color="textSecondary">
                                             <span className="mr20">
-                                                <BusinessCenterOutlinedIcon className="icons" />
-                                                {bedrooms}
+                                                <DescriptionOutlinedIcon className="icons" />
+                                                {bedrooms.replace('Size_', '') + ` - ${propertyMode}`}
                                             </span>
                                             <span>
                                                 <AccountBalanceWalletOutlinedIcon className="icons" />
@@ -104,16 +105,12 @@ export default function ComplexGrid(props) {
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
                                             <span className="mr20">
-                                                <BusinessCenterOutlinedIcon className="icons" />
+                                                <HomeOutlinedIcon className="icons" />
                                                 {propertyType}
                                             </span>
-                                            <span>
-                                                <AccountBalanceWalletOutlinedIcon className="icons" />
-                                                {propertyMode}
-                                            </span>
                                             <span className="mr20">
-                                                <BusinessCenterOutlinedIcon className="icons" />
-                                                {furnishing}
+                                                <LocalHotelOutlinedIcon className="icons" />
+                                                {furnishing.replace('UN_', '')}
                                             </span>
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">

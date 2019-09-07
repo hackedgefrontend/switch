@@ -11,7 +11,6 @@ import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceW
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import BusinessCenterOutlinedIcon from '@material-ui/icons/BusinessCenterOutlined';
 import BusinessOutlinedIcon from '@material-ui/icons/BusinessOutlined';
-import * as sprite from '../../style/srpSprites.png'
 
 const appartmentIcon = 'https://d8it4huxumps7.cloudfront.net/bites/wp-content/uploads/2019/08/29082816/Corporate-competitions-helped-me-confront-my-own-fears.jpg';
 
@@ -37,7 +36,6 @@ const useStyles = makeStyles(theme => ({
         borderRadius: '4px'
     },
     hotIcon: {
-        background: `url(${sprite}) no-repeat`,
         width: '17px',
         height: '16px',
         verticalAlign: 'bottom',
@@ -66,7 +64,7 @@ export default function ComplexGrid(props) {
             return (
                 <div className={classes.root}>
                     <Paper className={classes.paper}>
-                        <Grid container spacing={2}>
+                        <Grid container spacing={2} className="bgGray">
                             <Grid item>
                                 <ButtonBase className={classes.image}>
                                     <img className={classes.img + " br4 "} alt="complex" src={appartmentIcon} />

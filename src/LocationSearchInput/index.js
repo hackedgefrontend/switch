@@ -10,11 +10,19 @@ export default class LocationSearchInput extends React.Component {
     super(props);
     this.state = { address: props.value || '' };
   }
+  static getDerivedStateFromProps = (nextProps, prevState) => {
+    if (nextProps.value !== prevState.address) {
+      return {
+        address: nextProps.value
+      }
+    }
+    return prevState;
+  }
 
   handleChange = address => {
     this.setState({ address });
-    if (this.props.onSearchAddress) {
-      this.props.onSearchAddress(address)
+    if (this.props.onChange) {
+      this.props.onChange(address)
     }
   };
 
@@ -24,8 +32,8 @@ export default class LocationSearchInput extends React.Component {
       .then(latLng => console.log('Success', latLng))
       .catch(error => console.error('Error', error));
     this.setState({ address });
-    if (this.props.onSearchAddress) {
-      this.props.onSearchAddress(address)
+    if (this.props.onSelectAddress) {
+      this.props.onSelectAddress(address)
     }
   };
 
