@@ -1,0 +1,61 @@
+#root {
+    background: #f4f4f4
+}
+
+.mainContainer .heading {
+    color: #797575;
+}
+
+.wid25per {
+    width: 25%
+}
+
+.mainContainer .fs13 {
+    font-size: 13px
+}
+
+.mainContainer .fw600 {
+    font-weight: 600
+}
+
+.mt5 {
+    margin-top: 5px
+}
+
+.mt20 {
+    margin-top: 20px
+}
+
+.mainContainer .br25 {
+    border-radius: 25px;
+}
+
+.fr {
+    float: right;
+}
+
+.mr20 {
+    margin-right: 20px
+}
+
+.ml145 {
+    margin-left: 145px
+}
+
+.mainContainer .locInp {
+    margin: 12px 0 15px 146px
+}
+
+.mainContainer .locIcon {
+    color: #1acce0;
+    font-size: 15px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.mainContainer .icons {
+    font-size: 13px;
+    margin-right: 5px;
+    vertical-align: middle;
+    color: #c1bfbf;
+}
