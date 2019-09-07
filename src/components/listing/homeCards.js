@@ -11,6 +11,7 @@ import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceW
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import BusinessCenterOutlinedIcon from '@material-ui/icons/BusinessCenterOutlined';
 import BusinessOutlinedIcon from '@material-ui/icons/BusinessOutlined';
+import avatar from '../../avatar.png';
 import * as sprite from '../../style/srpSprites.png'
 
 const appartmentIcon = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKhTwI9ps1eyO5FmVYWmFVBbo-Et6n5UoY9S-el8iNVeYmd7xOSw';
@@ -49,6 +50,9 @@ const useStyles = makeStyles(theme => ({
 export default function ComplexGrid(props) {
     const classes = useStyles();
     let data = props.data ? props.data.list : null;
+    let {
+        showDistance=true
+    }=props;
     if (!data) {
         return (
             <div className={classes.root}>
@@ -60,7 +64,7 @@ export default function ComplexGrid(props) {
 
     return (
         data.map(ind => {
-            let { property, distance } = ind;
+            let { property, distance ,distanceFromMe, distanceFromThem} = ind;
             let { address,
                 bedrooms,
                 furnishing,
@@ -73,6 +77,7 @@ export default function ComplexGrid(props) {
                 society } = property;
 
             return (
+                <div>
                 <div className={classes.root}>
                     <Paper className={classes.paper}>
                         <Grid container spacing={2}>
@@ -89,55 +94,64 @@ export default function ComplexGrid(props) {
                                         </Typography>
                                         <Typography variant="body2" gutterBottom className="heading">
                                             <LocationOnOutlinedIcon className="locIcon" />
-                                            {address}
+                                            <span className="f12"> {address}</span>
                                         </Typography>
 
                                         <Typography variant="body2" color="textSecondary">
-                                            <span className="mr20">
+                                            <span className="mr20 f12">
                                                 <BusinessCenterOutlinedIcon className="icons" />
                                                 {bedrooms}
                                             </span>
-                                            <span>
+                                            <span className="f12 mr20">
                                                 <AccountBalanceWalletOutlinedIcon className="icons" />
                                                 {`Rs ${price}`}
                                             </span>
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
-                                            <span className="mr20">
+                                            <span className="mr20 f12">
                                                 <BusinessCenterOutlinedIcon className="icons" />
                                                 {propertyType}
                                             </span>
-                                            <span>
+                                            <span className="f12 mr20">
                                                 <AccountBalanceWalletOutlinedIcon className="icons" />
                                                 {propertyMode}
                                             </span>
-                                            <span className="mr20">
+                                            <span className="mr20 f12">
                                                 <BusinessCenterOutlinedIcon className="icons" />
                                                 {furnishing}
                                             </span>
                                         </Typography>
                                         <Typography variant="body2" color="textSecondary">
-                                            <span>
+                                            <span className="f12">
                                                 Publisher-Type : <b>{publisherType}</b>
                                             </span>
 
                                         </Typography>
 
                                         <Typography variant="body2" color="textSecondary">
-                                            <span className="mr20">
+                                            <span className="mr20 f12">
                                                 Publisher-Name : <b>{publisherName} </b>
                                             </span>
                                         </Typography>
 
                                     </Grid>
                                 </Grid>
+                                {showDistance &&
                                 <Grid item>
                                     <Typography className="heading fs13" variant="subtitle1"> {`${distance} kms`}</Typography>
                                 </Grid>
+                                }
+                                {!showDistance &&
+                                     <Grid item>
+                                     <Typography className="heading fs13" variant="subtitle1"> {`From A ${distanceFromMe} km `}<br/>{`From B ${distanceFromThem} km`}</Typography>
+                                 </Grid>
+                                }
 
                             </Grid>
                         </Grid>
                     </Paper>
+                </div>
+               
                 </div>
             );
         })

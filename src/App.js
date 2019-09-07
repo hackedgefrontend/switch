@@ -8,7 +8,6 @@ import './App.css';
 import GNB from './components/userLoginSignup/GNB'
 import Login from './components/userLoginSignup/Login'
 import Register from './components/userLoginSignup/Register'
-import JobsNearHome from './components/listing/jobNearHome'
 import HomeNearJob from './components/listing/homeNearJob'
 
 

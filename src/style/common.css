@@ -58,4 +58,9 @@
     margin-right: 5px;
     vertical-align: middle;
     color: #c1bfbf;
+    margin-top: -5px;
+}
+
+.f12{
+    font-size: 12px;
 }
