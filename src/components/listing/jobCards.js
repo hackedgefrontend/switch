@@ -49,6 +49,7 @@ const useStyles = makeStyles(theme => ({
 export default function ComplexGrid(props) {
     const classes = useStyles();
     let data = props.data ? props.data.list : null;
+    debugger
     if (!data) {
         return (
             <div className={classes.root}>

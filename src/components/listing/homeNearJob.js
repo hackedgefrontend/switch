@@ -43,7 +43,7 @@ export default class Login extends Component {
     }
     getUrl = (path) => {
         let url;
-        url = path.includes('homeNearJob') ? switchHomesUrl : (path.includes('JobNearHome') ? switchJobsUrl : null);
+        url = path.includes('homeNearJob') ? switchHomesUrl : (path.includes('jobsNearHome') ? switchJobsUrl : null);
         return url;
     }
     handleSliderChange = (evt, val) => {
@@ -74,7 +74,7 @@ export default class Login extends Component {
                     <LocationInput placeholder={"Enter the Location"} className="locInp" width={"500px"} />
                     <CustomSlider onChange={this.handleSliderChange} />
                     {routeName && routeName.includes('homeNearJob') && <HomeList data={data} />}
-                    {routeName && routeName.includes('JobNearHome') && <JobList data={data} />}
+                    {routeName && routeName.includes('jobsNearHome') && <JobList data={data} />}
                 </Container>
             </React.Fragment>
         )
